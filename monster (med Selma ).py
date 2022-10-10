@@ -22,9 +22,18 @@ class Monster:
     def misteHelse(Monster, minus):
         Monster.helse = Monster.helse - minus
         if (Monster.helse <= 0):
-            
             print("Monsteret døde! Du vant!")
             
+         
+    def misteHelseS(self, minus):
+        self.helse = self.helse - minus
+        if (self.helse <= 0):
+            print("Game Over")
+                    
+    ting = {}        
+    def finneStøv(self):
+        self.inventory = self.inventory.append["støv"]
+        
          
 monster1 = Monster("Gnarl",100,80,"Pixiedust")
 
@@ -36,40 +45,42 @@ class Spiller(Monster):
 
 spiller1 = Spiller("Hero",100,65,"Damsels in distress")
 
-#def finnPixieDust():
-#    self.inventory = 
+print(vars(spiller1))
+print(vars(monster1))
 
-while (True):
+while (input == True):
     print()
-    print(vars(spiller1))
-    print(vars(monster1))
 
-    print("Gå en tur og se hva som hender (g)")
-    print("Sloss med monster1 (s)")
-    print("Heal (h)")
-    print("Avslutt spillet (q)")
-    svar = input("Hva vil du gjøre? ")
-
-    if (svar == "q"):
-        break
-    elif (svar == "g"):
+    
+        
+    if (svar == "g"):
         hendelse = randint(1,2)
         if (hendelse == 1):
-            print("ikke ferdig, sloss med monster1")
+            print("Du er midt inne i ingenmannsland, og hører noe rart? Skal du undersøke det?J/n")
+            if (svar == "J"):
+                print("Du møtte et monster, og du slår han før han ser deg.")
+                spiller1.sloss()
+                monster1.misteHelse(20)
+                print("")
+            elif (svar == "n"):
+                print("Du leter etter noe brukbart, og ser høyt og lav etter et magisk pulver.")
         elif (hendelse == 2):
-            print("ikke ferdig, finn Pixiedust")
-    elif (svar == "s"):
-        spiller1.sloss()
-        monster1.misteHelse(20)
-    elif (svar == "h"):
-        spiller1.oppStyrke()
-        
-        
+            print("Du har møtt en heks! Hun kommer til å kaste trolldom på deg, du må rømme! Hva gjør du?")
+            print("Løpe eller kjempe? L/k")
+            if (svar == "L"):
+                print("Du ble slått av heksen og miste litt helse!")
+                spiller1.misteHelseS(10)
+            elif (svar == "k"):
+                spiller1.sloss()
+        elif (svar == "h"):
+                    spiller1.oppStyrke()
+        elif (svar == "q"):  
+            print("OK bye!")
+            break
 
 
-print("OK bye!")
 
-"""
+    """
 print(type(monster1))
 print(vars(monster1))
 print(type(spiller1))
